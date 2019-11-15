@@ -15,7 +15,6 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URI;
 import java.util.Collection;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -169,7 +168,7 @@ public class Launcher {
       protected Object doInBackground() {
         try {
           final GithubClient client = new GithubClient();
-          final Collection<RemoteFile> files = client.getFiles("Spiralka-Chan", "spiralization");
+          final Collection<RemoteFile> files = client.getFiles("Spiralka-Chan", "spiralization", "data");
           listener.update(0.1f);
           final Patch patch = new Patch(files);
           if (patch.getPatchNotes() != null) {
@@ -181,7 +180,7 @@ public class Launcher {
           }
         } catch (final Exception e) {
           LOG.log(Level.SEVERE, e.getMessage(), e);
-          fatalError("Ошибка", "Случилось нечто непредвиденное:\n" + e.getMessage());
+          fatalError("Ошибка", "Случилось непредвиденное:\n" + e.getMessage());
         }
         return null;
       }
@@ -211,9 +210,6 @@ public class Launcher {
     }
 
     final String rootPath = args.length > 0 ? args[0] : DEFAULT_GAME_ROOT_PATH;
-
-    ResourceBundle rb = ResourceBundle.getBundle("story");
-
 
     LOG.info("Started with " + rootPath);
 

@@ -34,8 +34,8 @@ public class GithubClient {
     this.apiUrl = apiUrl;
   }
 
-  public Collection<RemoteFile> getFiles(final String user, final String repo) throws IOException {
-    return fetchFiles(user, repo, "");
+  public Collection<RemoteFile> getFiles(final String user, final String repo, final String path) throws IOException {
+    return fetchFiles(user, repo, path);
   }
 
   private Collection<RemoteFile> fetchFiles(final String user, final String repo, final String path) throws IOException {
@@ -67,6 +67,8 @@ public class GithubClient {
   private JsonNode request(final String path) throws IOException {
     final URL url = new URL(this.apiUrl, path);
     final URLConnection conn = url.openConnection();
+    // TODO: XXX
+    conn.setRequestProperty("Authorization", "token 37d2f8d48a1431f2c699f4fab93ca053e9d6dcd2");
     try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
       ObjectMapper mapper = new ObjectMapper();
       return mapper.readTree(in);
