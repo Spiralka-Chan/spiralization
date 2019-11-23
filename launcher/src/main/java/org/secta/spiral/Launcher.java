@@ -1,5 +1,6 @@
 package org.secta.spiral;
 
+import org.secta.spiral.common.Constants;
 import org.secta.spiral.common.LogUtils;
 import org.secta.spiral.common.ProgressListener;
 import org.secta.spiral.common.RemoteFile;
@@ -168,7 +169,7 @@ public class Launcher {
       protected Object doInBackground() {
         try {
           final GithubClient client = new GithubClient();
-          final Collection<RemoteFile> files = client.getFiles("Spiralka-Chan", "spiralization", "data");
+          final Collection<RemoteFile> files = client.getFiles(Constants.GITHUB_USER, Constants.GITHUB_REPO, Constants.DATA_PATH);
           listener.update(0.1f);
           final Patch patch = new Patch(files);
           if (patch.getPatchNotes() != null) {

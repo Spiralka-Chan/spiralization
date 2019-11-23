@@ -68,7 +68,7 @@ public class GithubClient {
     final URL url = new URL(this.apiUrl, path);
     final URLConnection conn = url.openConnection();
     // TODO: XXX
-    conn.setRequestProperty("Authorization", "token 37d2f8d48a1431f2c699f4fab93ca053e9d6dcd2");
+    // conn.setRequestProperty("Authorization", "token 37d2f8d48a1431f2c699f4fab93ca053e9d6dcd2");
     try (BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
       ObjectMapper mapper = new ObjectMapper();
       return mapper.readTree(in);
