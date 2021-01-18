@@ -9,16 +9,16 @@ import java.util.List;
 import static java.awt.Desktop.getDesktop;
 import static java.util.Arrays.asList;
 
-public class SteamGameExecutor {
+public class SteamAppExecutor {
   private final String steamInstallationPath;
   private final boolean useSteamProtocol;
 
-  public SteamGameExecutor(final String steamPath, boolean useSteamProtocol) {
+  public SteamAppExecutor(final String steamPath, boolean useSteamProtocol) {
     this.steamInstallationPath = steamPath;
     this.useSteamProtocol = useSteamProtocol;
   }
 
-  public SteamGameExecutor() {
+  public SteamAppExecutor() {
     this(null, true);
   }
 

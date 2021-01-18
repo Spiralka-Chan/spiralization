@@ -96,7 +96,7 @@ public class Launcher {
 
     runButton.addActionListener(actionEvent -> {
       try {
-        new SteamGameExecutor().startGameById(STEAM_APP_ID);
+        new SteamAppExecutor().startGameById(STEAM_APP_ID);
       } catch (final Exception e) {
         LOG.log(Level.SEVERE, "Failed to start steamapp " + STEAM_APP_ID, e);
       }
